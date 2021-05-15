@@ -32,9 +32,9 @@ public class AddressBookMain2 {
 	}
 
 	static void add() {
-		System.out.println("-----");
+		System.out.println("--------------------------------------");
 		System.out.println("등록");
-		System.out.println("-----");
+		System.out.println("--------------------------------------");
 		System.out.print("이름을 입력하세요 : ");
 		String newName = scanner.next();
 		System.out.print("전화번호 입력하세요: ");
@@ -53,12 +53,12 @@ public class AddressBookMain2 {
 	}
 
 	static void view() {
-		System.out.println("-------");
+		System.out.println("--------------------------------------");
 		System.out.println("연락처");
-		System.out.println("-------");
+		System.out.println("--------------------------------------");
 		for (int i = 0; i < ab.length; i++) {
 			if (ab[i] != null) {
-				System.out.println(ab[i].name + " " + ab[i].phone + " " + ab[i].email + " " + ab[i].sns);
+				System.out.println(i + "." + ab[i].name + " " + ab[i].phone + " " + ab[i].email + " " + ab[i].sns);
 				break;
 			} else if (ab[0] == null) {
 				System.out.println("등록된 연락처가 없습니다.");
@@ -68,22 +68,23 @@ public class AddressBookMain2 {
 	}
 
 	static void search() {
-		System.out.println("-----");
+		System.out.println("--------------------------------------");
 		System.out.println("검색");
-		System.out.println("-----");
-
-		if (ab[0] == null) {
-			System.out.println("등록된 연락처가 없습니다.");
-		}
+		System.out.println("--------------------------------------");
 
 		System.out.print("검색할 이름을 입력하세요 : ");
 		String searchName = scanner.next();
+
 		for (int i = 0; i < ab.length; i++) {
+			if (ab[i] == null) {
+				System.out.println("등록된 연락처가 없습니다.");
+				break;
+			}
 			if (ab[i].name.equals(searchName)) {
-				System.out.println(ab[i].name + " " + ab[i].phone + " " + ab[i].email + " " + ab[i].sns);
+				System.out.println(i + "." + ab[i].name + " " + ab[i].phone + " " + ab[i].email + " " + ab[i].sns);
 				break;
 			} else {
-				System.out.println("연락처를 찾을 수 없습니다.");
+				System.out.println("등록된 연락처가 없습니다.");
 			}
 		}
 	}
